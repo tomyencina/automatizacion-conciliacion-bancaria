@@ -21,6 +21,8 @@ El pipeline extrae extractos bancarios crudos, los limpia, los procesa en un mot
 * **Integridad de datos:** Evita errores de tipeo humano al trasladar cifras.
 * **Trazabilidad:** Separa claramente las transacciones pendientes del libro de las transacciones no registradas por la empresa.
 
+<img width="1366" height="485" alt="dashboard_conciliacion" src="https://github.com/user-attachments/assets/262fa7c6-9dbc-46b9-af0c-b3e2dd05d111" />
+
 ## 👨‍💼 Sobre Mí
 Soy Tomás, Contador Público (UBA) apasionado por el Análisis de Datos. Combino mi profundo conocimiento del dominio contable, impositivo y financiero con herramientas tecnológicas (Python, SQL, Power BI) para transformar datos crudos en decisiones de negocio ágiles y precisas. 
 
