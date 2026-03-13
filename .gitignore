@@ -1,12 +1,9 @@
-# Ignorar el archivo de variables de entorno (¡Acá está la clave!)
 .env
 
-# Ignorar archivos de datos crudos (Buena práctica por protección de datos)
 *.csv
 *.xlsx
 extracto_banco_marzo.csv
 
-# Ignorar carpetas virtuales y basura del sistema que genera Python/Windows
 __pycache__/
 .venv/
 venv/
