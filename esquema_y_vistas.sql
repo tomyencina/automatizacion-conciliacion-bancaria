@@ -97,3 +97,13 @@ LEFT JOIN fact_extracto_banco b
     ON l.monto_contable = b.monto_banco 
     AND l.id_cuenta = b.id_cuenta
 WHERE b.id_movimiento IS NULL;
+
+-- ==============================================================================
+-- 4. DATOS SEMILLA (Seed Data) - Solo para demostración del portfolio
+-- ==============================================================================
+
+INSERT INTO fact_libro_diario (id_cuenta, id_concepto, fecha_contable, descripcion_asiento, monto_contable, estado_conciliacion)
+VALUES 
+(2, 3, '2026-03-09', 'Pago a Proveedor XYZ s/Factura', -35000.00, 'Pendiente'),
+(2, 1, '2026-03-10', 'Cobro Lote Honorarios Cliente A', 250000.00, 'Pendiente'),
+(2, 2, '2026-03-12', 'Pago VEP AFIP Cargas Sociales', -45000.00, 'Pendiente');
