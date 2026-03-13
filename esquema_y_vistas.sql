@@ -39,16 +39,17 @@ CREATE TABLE IF NOT EXISTS fact_extracto_banco (
 );
 
 -- Tabla que simula las registraciones contables de la empresa (Libro Mayor/Diario)
-CREATE TABLE IF NOT EXISTS fact_libro_diario (
-    id_asiento INT AUTO_INCREMENT PRIMARY KEY,
-    id_cuenta INT,
-    id_concepto INT,
-    fecha_contable DATE,
-    descripcion_asiento VARCHAR(255),
-    monto_contable DECIMAL(15, 2),
-    estado_conciliacion VARCHAR(20) DEFAULT 'Pendiente',
+CREATE TABLE fact_movimientos (
+    id_movimiento INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE NOT NULL,
+    id_cuenta INT NOT NULL,
+    id_concepto INT NOT NULL,
+    monto DECIMAL (15, 2) NOT NULL,
+    comprobante VARCHAR (50),
+    detalle VARCHAR (255),
+    estado_conciliacion VARCHAR (20) DEFAULT 'Pendiente',
     FOREIGN KEY (id_cuenta) REFERENCES dim_cuentas(id_cuenta),
-    FOREIGN KEY (id_concepto) REFERENCES dim_conceptos(id_concepto)
+    FOREIGN KEY (id_concepto) REFERENCES dim_conceptos(id_concepto);
 );
 
 -- ==============================================================================
@@ -102,8 +103,11 @@ WHERE b.id_movimiento IS NULL;
 -- 4. DATOS SEMILLA (Seed Data) - Solo para demostración del portfolio
 -- ==============================================================================
 
-INSERT INTO fact_libro_diario (id_cuenta, id_concepto, fecha_contable, descripcion_asiento, monto_contable, estado_conciliacion)
+INSERT INTO fact_movimientos (fecha, id_cuenta, id_concepto, monto, comprobante, detalle, estado_conciliacion)
 VALUES 
-(2, 3, '2026-03-09', 'Pago a Proveedor XYZ s/Factura', -35000.00, 'Pendiente'),
-(2, 1, '2026-03-10', 'Cobro Lote Honorarios Cliente A', 250000.00, 'Pendiente'),
-(2, 2, '2026-03-12', 'Pago VEP AFIP Cargas Sociales', -45000.00, 'Pendiente');
+('2026-03-09', 2, 3, -35000.00, 'OP-1024', 'Pago a Proveedor XYZ s/Factura', 'Pendiente'),
+('2026-03-10', 2, 1, 250000.00, 'REC-0001', 'Cobro Lote Honorarios Cliente A', 'Pendiente'),
+('2026-03-12', 2, 2, -45000.00, 'VEP-8854', 'Pago VEP AFIP Cargas Sociales', 'Pendiente'),
+
+('2026-03-13', 2, 3, -150000.00, 'CHQ-554433', 'Pago a Proveedor - Cheque diferido', 'Pendiente'),
+('2026-03-13', 2, 3, -8500.00, 'OP-1025', 'Anticipo Proveedor Insumos', 'Pendiente');
